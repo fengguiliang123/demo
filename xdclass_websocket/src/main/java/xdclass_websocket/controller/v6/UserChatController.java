@@ -41,6 +41,7 @@ public class UserChatController {
 	static{
 		onlineUser.put("123",new User("admin","888"));
 	}
+
 	
 	
 	/**

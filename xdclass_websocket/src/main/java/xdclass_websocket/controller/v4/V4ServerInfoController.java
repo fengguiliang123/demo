@@ -27,7 +27,7 @@ public class V4ServerInfoController {
 	private WebSocketService ws;
 	
 	
-	@Scheduled(fixedRate = 3000)
+//	@Scheduled(fixedRate = 3000)
 	//方法不能加参数
 	public void sendServerInfo( ){
 

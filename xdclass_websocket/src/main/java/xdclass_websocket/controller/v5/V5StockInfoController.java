@@ -24,7 +24,7 @@ public class V5StockInfoController {
 	@Autowired
 	private WebSocketService ws;
 	
-	@Scheduled(fixedRate=1000)
+//	@Scheduled(fixedRate=1000)
 	public void stockInfo(){
 		ws.sendStockInfo();
 	}

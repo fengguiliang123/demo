@@ -25,7 +25,7 @@ public class SocketChannelIntecepter extends ChannelInterceptorAdapter{
 	@Override
 	public void afterSendCompletion(Message<?> message, MessageChannel channel,
 			boolean sent, Exception ex) {
-		System.out.println("SocketChannelIntecepter->afterSendCompletion");
+//		System.out.println("SocketChannelIntecepter->afterSendCompletion");
 		super.afterSendCompletion(message, channel, sent, ex);
 	}
 
@@ -35,7 +35,7 @@ public class SocketChannelIntecepter extends ChannelInterceptorAdapter{
 	 */
 	@Override
 	public Message<?> preSend(Message<?> message, MessageChannel channel) {
-		System.out.println("SocketChannelIntecepter->preSend");
+//		System.out.println("SocketChannelIntecepter->preSend");
 		
 		return super.preSend(message, channel);
 	}
@@ -46,14 +46,14 @@ public class SocketChannelIntecepter extends ChannelInterceptorAdapter{
 	@Override
 	public void postSend(Message<?> message, MessageChannel channel,
 			boolean sent) {
-		System.out.println("SocketChannelIntecepter->postSend");
+//		System.out.println("SocketChannelIntecepter->postSend");
 		
 		StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(message);//消息头访问器
 		
 		if (headerAccessor.getCommand() == null ) return ;// 避免非stomp消息类型，例如心跳检测
 		
 		String sessionId = headerAccessor.getSessionAttributes().get("sessionId").toString();
-		System.out.println("SocketChannelIntecepter -> sessionId = "+sessionId);
+//		System.out.println("SocketChannelIntecepter -> sessionId = "+sessionId);
 		
 		switch (headerAccessor.getCommand()) {
 		case CONNECT:
@@ -78,13 +78,13 @@ public class SocketChannelIntecepter extends ChannelInterceptorAdapter{
 	
 	//连接成功
 	private void connect(String sessionId){
-		System.out.println("connect sessionId="+sessionId);
+//		System.out.println("connect sessionId="+sessionId);
 	}
 	
 	
 	//断开连接
 	private void disconnect(String sessionId){
-		System.out.println("disconnect sessionId="+sessionId);
+//		System.out.println("disconnect sessionId="+sessionId);
 		//用户下线操作
 		UserChatController.onlineUser.remove(sessionId);
 	}
